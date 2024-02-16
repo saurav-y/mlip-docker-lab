@@ -13,14 +13,15 @@ def predict():
     iris_input = get_json['input']
     
     # TODO: Import trained model
-    model = ...
+    model = joblib.load('iris_model.pkl')
     
     # TODO: Make prediction using the model 
     # HINT: use np.array().reshape(1, -1) to convert input to 2D array
-    prediction = ...
+    input = np.array(iris_input).reshape(1, -1)
+    prediction = model.predict(input)
     
     # TODO: Return the prediction as a response
-    return ...
+    return prediction.tolist()
 
 @app.route('/')
 def hello():
